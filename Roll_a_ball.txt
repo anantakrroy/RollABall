@@ -1,0 +1,48 @@
+Roll a ball project
+
+1. 	The default location from which all the coordinate systems are measured is (0,0,0)
+
+2. 	The usual size of primitive objects in Unity is 1:1:1 or 1:2:1 and hence changing the y position of the object can help in moving the object out of the other object in which it is placed eg. a sphere on a plane
+
+3. 	To add color or texture to a game object, we need to use MATERIALS
+
+4. Unity scene by default has a skybox and a directional light to simulate the Sun. 
+
+5.	 For the game objects to behave like real world objects which bump off walls or fall to gravity, we need to attach a RIGIDBODY component to the game object.
+
+6. 	Maintaining a proper hierarchy of the components ensures speedy game development but has no effect on the game performance.
+
+7. 	Update() method is called before every frame is rendered and this is where the Game code goes.
+	FixedUpdate() is called before performing any physics calculation is done and this is where the Physics code goes.
+
+8. 	Making the camera a child of the game object is a bug. The camera remains fixed relative the game object and rotates as well with the game object. Thus, to follow a  game object but not rotate with it, we need to connect the game object to the camera but with a script.
+
+9.	The "offset" allows us to follow the game object .Offset is the difference between the object's position and the camera position. LateUpdate() is used to ensure the position of the camera gets updated every time the position of the game object changes.
+
+10. A PREFAB is an asset that contains the template of a game object or a game object family. It is created from an existing game object or game object family. We can use this prefab in any scene in the current project
+
+11. To detect collisions, each game object has a collider attached to it.
+
+12.	For recognising a game object , we use the TAG component.
+
+13.	COMPARE TAG- to efficiently compare the tag of any game object with a string value
+
+14.	SETACTIVE - To activate or deactivate a game object
+
+15. How do COLLISIONS work in Unity physics engine?
+		The physics engine does not allow two collider volumes to overlap.When the physics engine detects that two or more collider will overlap in that frame, the physics engine will look into the object and analyse their speed, rotation and shape. and calculates their collision. Colliders can be STATIC or DYNAMIC.
+		
+		Static colliders are the non moving parts of the scene.Dynamic colliders are the objects which move. In calculating a collision the static geometry will not be affected by the collision, but the dynamic objects will be. 
+
+		Physics engine can allow the penetration of collider volumes. When it does this, the physics engine still calculates the collider volumes and keeps track of the collider overlap, but it does not act on the overlapping objects. It doesn't cause a collision. This is done by making the colliders in to TRIGGER COLLIDERS. When the colliders are made into trigger collider, the contact with them can be detected using the "OnTrigger" event messages. Colliders as trigger can be used cleverly to update information when e.g.. a player enters the door and then the progress is updated.
+
+16.	Optimisation issue in Unity- The Unity engine calculates the volumes of all the static colliders and places them in the Static collider cache. However, whenever there is a change in volume of any static collider , the engine recalculates the volumes of all the static colliders and updates the cache.This takes up a lot of resources. The same is not done for dynamic colliders since it is expected for them to be always in motion. 
+	Any game object which has only a collider attached to it is STATIC but objects which have both the collider and the  physics rigidbody attached to it is DYNAMIC.
+
+17.	Standard rigid bodies are moved using physics forces whereas KINEMATIC rigid bodies are move using their transforms. 
+
+18. Colliders overview https://docs.unity3d.com/Manual/CollidersOverview.html
+
+19. 
+
+.
